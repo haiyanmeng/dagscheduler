@@ -103,10 +103,10 @@ def schedule_tasks(machine_number):
 				if finish_task_id in task_children_dict:
 					for item in task_children_dict[finish_task_id]:
 						task_dependency_list_dict[item].remove(finish_task_id)	
-					if len(finish_event_list) > 0:
-						next_finish_event_time = int((finish_event_list[0]).keys()[0])
-					else:
-						break
+				if len(finish_event_list) > 0:
+					next_finish_event_time = int((finish_event_list[0]).keys()[0])
+				else:
+					break
 	return (current_time, max_used_machines)
 	
 

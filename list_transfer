@@ -1,0 +1,32 @@
+#! /usr/bin/python
+import sys
+from optparse import OptionParser
+
+def remove_task_length(input_filename, output_filename):
+	with open(output_filename, 'w') as output_file:
+		with open(input_filename) as input_file:
+			for line in input_file:
+				first_space = line.find(' ', 0)
+				task_id = line[:first_space]
+				second_space = line.find(' ', first_space + 1)
+				task_length = line[first_space + 1:second_space]
+				right_brace = line.find(']', second_space + 1)
+				task_dependency = line[second_space + 1:right_brace + 1]
+				task_dependency = task_dependency.replace(' ', '')
+				output_file.write("%s %s\n" % (task_id, task_dependency))	
+
+def main():
+	#Problem: extension support incremental download
+	parser = OptionParser(usage="usage: %prog [options] taskfile",
+						version="%prog 1.0")
+	parser.add_option("-o", "--output",
+					action="store",
+					help="The output filename")
+	(options, args) = parser.parse_args()
+
+	output_filename = options.output
+	input_filename = filename = sys.argv[-1]
+	remove_task_length(input_filename, output_filename)
+
+if __name__ == "__main__":
+	main()

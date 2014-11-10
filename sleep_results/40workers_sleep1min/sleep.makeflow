@@ -1,0 +1,223 @@
+SLEEP=/bin/sleep
+#the DAG has 5 levels. The widths of these 5 levels: 1, 10, 50, 10, 1. Levels means depths here.
+
+#DAG level 1 
+level1: $SLEEP
+	$SLEEP 60 > level1
+
+#DAG level 2 
+level2_1: $SLEEP level1 
+	$SLEEP 60 > level2_1
+
+level2_2: $SLEEP level1 
+	$SLEEP 60 > level2_2
+
+level2_3: $SLEEP level1 
+	$SLEEP 60 > level2_3
+
+level2_4: $SLEEP level1 
+	$SLEEP 60 > level2_4
+
+level2_5: $SLEEP level1 
+	$SLEEP 60 > level2_5
+
+level2_6: $SLEEP level1 
+	$SLEEP 60 > level2_6
+
+level2_7: $SLEEP level1 
+	$SLEEP 60 > level2_7
+
+level2_8: $SLEEP level1 
+	$SLEEP 60 > level2_8
+
+level2_9: $SLEEP level1 
+	$SLEEP 60 > level2_9
+
+level2_10: $SLEEP level1 
+	$SLEEP 60 > level2_10
+
+#DAG level 3 
+level3_1_1: $SLEEP level2_1
+	$SLEEP 60 > level3_1_1
+
+level3_1_2: $SLEEP level2_1
+	$SLEEP 60 > level3_1_2
+
+level3_1_3: $SLEEP level2_1
+	$SLEEP 60 > level3_1_3
+
+level3_1_4: $SLEEP level2_1
+	$SLEEP 60 > level3_1_4
+
+level3_1_5: $SLEEP level2_1
+	$SLEEP 60 > level3_1_5
+
+level3_2_1: $SLEEP level2_2
+	$SLEEP 60 > level3_2_1
+
+level3_2_2: $SLEEP level2_2
+	$SLEEP 60 > level3_2_2
+
+level3_2_3: $SLEEP level2_2
+	$SLEEP 60 > level3_2_3
+
+level3_2_4: $SLEEP level2_2
+	$SLEEP 60 > level3_2_4
+
+level3_2_5: $SLEEP level2_2
+	$SLEEP 60 > level3_2_5
+
+level3_3_1: $SLEEP level2_3
+	$SLEEP 60 > level3_3_1
+
+level3_3_2: $SLEEP level2_3
+	$SLEEP 60 > level3_3_2
+
+level3_3_3: $SLEEP level2_3
+	$SLEEP 60 > level3_3_3
+
+level3_3_4: $SLEEP level2_3
+	$SLEEP 60 > level3_3_4
+
+level3_3_5: $SLEEP level2_3
+	$SLEEP 60 > level3_3_5
+
+level3_4_1: $SLEEP level2_4
+	$SLEEP 60 > level3_4_1
+
+level3_4_2: $SLEEP level2_4
+	$SLEEP 60 > level3_4_2
+
+level3_4_3: $SLEEP level2_4
+	$SLEEP 60 > level3_4_3
+
+level3_4_4: $SLEEP level2_4
+	$SLEEP 60 > level3_4_4
+
+level3_4_5: $SLEEP level2_4
+	$SLEEP 60 > level3_4_5
+
+level3_5_1: $SLEEP level2_5
+	$SLEEP 60 > level3_5_1
+
+level3_5_2: $SLEEP level2_5
+	$SLEEP 60 > level3_5_2
+
+level3_5_3: $SLEEP level2_5
+	$SLEEP 60 > level3_5_3
+
+level3_5_4: $SLEEP level2_5
+	$SLEEP 60 > level3_5_4
+
+level3_5_5: $SLEEP level2_5
+	$SLEEP 60 > level3_5_5
+
+level3_6_1: $SLEEP level2_6
+	$SLEEP 60 > level3_6_1
+
+level3_6_2: $SLEEP level2_6
+	$SLEEP 60 > level3_6_2
+
+level3_6_3: $SLEEP level2_6
+	$SLEEP 60 > level3_6_3
+
+level3_6_4: $SLEEP level2_6
+	$SLEEP 60 > level3_6_4
+
+level3_6_5: $SLEEP level2_6
+	$SLEEP 60 > level3_6_5
+
+level3_7_1: $SLEEP level2_7
+	$SLEEP 60 > level3_7_1
+
+level3_7_2: $SLEEP level2_7
+	$SLEEP 60 > level3_7_2
+
+level3_7_3: $SLEEP level2_7
+	$SLEEP 60 > level3_7_3
+
+level3_7_4: $SLEEP level2_7
+	$SLEEP 60 > level3_7_4
+
+level3_7_5: $SLEEP level2_7
+	$SLEEP 60 > level3_7_5
+
+level3_8_1: $SLEEP level2_8
+	$SLEEP 60 > level3_8_1
+
+level3_8_2: $SLEEP level2_8
+	$SLEEP 60 > level3_8_2
+
+level3_8_3: $SLEEP level2_8
+	$SLEEP 60 > level3_8_3
+
+level3_8_4: $SLEEP level2_8
+	$SLEEP 60 > level3_8_4
+
+level3_8_5: $SLEEP level2_8
+	$SLEEP 60 > level3_8_5
+
+level3_9_1: $SLEEP level2_9
+	$SLEEP 60 > level3_9_1
+
+level3_9_2: $SLEEP level2_9
+	$SLEEP 60 > level3_9_2
+
+level3_9_3: $SLEEP level2_9
+	$SLEEP 60 > level3_9_3
+
+level3_9_4: $SLEEP level2_9
+	$SLEEP 60 > level3_9_4
+
+level3_9_5: $SLEEP level2_9
+	$SLEEP 60 > level3_9_5
+
+level3_10_1: $SLEEP level2_10
+	$SLEEP 60 > level3_10_1
+
+level3_10_2: $SLEEP level2_10
+	$SLEEP 60 > level3_10_2
+
+level3_10_3: $SLEEP level2_10
+	$SLEEP 60 > level3_10_3
+
+level3_10_4: $SLEEP level2_10
+	$SLEEP 60 > level3_10_4
+
+level3_10_5: $SLEEP level2_10
+	$SLEEP 60 > level3_10_5
+
+#DAG level 4 
+level4_1: $SLEEP level3_1_1 level3_1_2 level3_1_3 level3_1_4 level3_1_5
+	$SLEEP 60 > level4_1
+
+level4_2: $SLEEP level3_2_1 level3_2_2 level3_2_3 level3_2_4 level3_2_5
+	$SLEEP 60 > level4_2
+
+level4_3: $SLEEP level3_3_1 level3_3_2 level3_3_3 level3_3_4 level3_3_5
+	$SLEEP 60 > level4_3
+
+level4_4: $SLEEP level3_4_1 level3_4_2 level3_4_3 level3_4_4 level3_4_5
+	$SLEEP 60 > level4_4
+
+level4_5: $SLEEP level3_5_1 level3_5_2 level3_5_3 level3_5_4 level3_5_5
+	$SLEEP 60 > level4_5
+
+level4_6: $SLEEP level3_6_1 level3_6_2 level3_6_3 level3_6_4 level3_6_5
+	$SLEEP 60 > level4_6
+
+level4_7: $SLEEP level3_7_1 level3_7_2 level3_7_3 level3_7_4 level3_7_5
+	$SLEEP 60 > level4_7
+
+level4_8: $SLEEP level3_8_1 level3_8_2 level3_8_3 level3_8_4 level3_8_5
+	$SLEEP 60 > level4_8
+
+level4_9: $SLEEP level3_9_1 level3_9_2 level3_9_3 level3_9_4 level3_9_5
+	$SLEEP 60 > level4_9
+
+level4_10: $SLEEP level3_10_1 level3_10_2 level3_10_3 level3_10_4 level3_10_5
+	$SLEEP 60 > level4_10
+
+#DAG level 5 
+level5: $SLEEP level4_1 level4_2 level4_3 level4_4 level4_5 level4_6 level4_7 level4_8 level4_9 level4_10
+	$SLEEP 60 > level5

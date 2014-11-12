@@ -113,16 +113,8 @@ def schedule_tasks():
 		time_interval_endpoint_list.append(current_time)
 		time_interval_width_list.append(last_len_running_task_list)
 	return (current_time, max_used_machines, time_interval_endpoint_list, time_interval_width_list)
-	
 
-def main():
-	#Problem: extension support incremental download
-	parser = OptionParser(usage="usage: %prog [options] taskfile",
-						version="%prog 1.0")
-	(options, args) = parser.parse_args()
-
-	filename = sys.argv[-1]
-	
+def full_process(filename):
 	real_cost = initialize_struct(filename)
 	(execution_time, max_used_machines, time_interval_endpoint_list, time_interval_width_list) = schedule_tasks()
 	total_cost = max_used_machines * int(execution_time)
@@ -147,8 +139,30 @@ def main():
 	optimized_machine_number = 0
 	for i in range(0, len(time_interval_width_list)):
 		optimized_machine_number += time_interval_width_list[i] * (time_interval_contribute_list[i] / float(real_cost))
-	print optimized_machine_number
+	print "Optimized Machine Number: ", optimized_machine_number
 	
+
+
+def main():
+	#Problem: extension support incremental download
+	parser = OptionParser(usage="usage: %prog --degree full|half|zero taskfile",
+						version="%prog 1.0")
+	parser.add_option("-d", "--degree",
+					action="store",
+					help="The user's knowledge about each task length, which can be full, half, zero.\nFull: The length of each task is known.\nHalf: The task length is unknown, but the tasks on the same levels takes similar time.\nZero: The task length is unknown, and the tasks on the same level may take different times.")
+	(options, args) = parser.parse_args()
+
+	task_info = options.degree
+	filename = sys.argv[-1]
+
+	if task_info == 'full':	
+		full_process(filename)
+	elif task_info == 'half':
+		pass
+	elif task_info == 'zero':
+		pass
+	else:
+		sys.exit("Unknown degree option. The degree option can be full, half, or zero.")
 
 if __name__ == "__main__":
 	main()

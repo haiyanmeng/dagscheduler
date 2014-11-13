@@ -7,15 +7,16 @@ ready_task_list = []
 waiting_task_list = []
 finish_event_list = []
 task_length_dict = {}
-task_children_dict = {} #each item in it is a <task_id, children_list>
-task_dependency_list_dict = {} #each item in it is a <task_id, dependency_list>
 
 #each task should contains the task id, task length, task dependency
 #keep tracking waiting_task_list, once the task is ready (all its dependency is ready), put it into ready_task_list; 
 
-def initialize_struct(filename):
+def initialize_struct_full(filename):
 	real_cost = 0 
 	with open(filename) as task_file:
+		task_children_list_dict = {} #each item in it is a <task_id, children_list>
+		task_dependency_list_dict = {} #each item in it is a <task_id, dependency_list>
+
 		for line in task_file:
 			first_space = line.find(' ', 0)
 			task_id = line[:first_space]
@@ -31,13 +32,41 @@ def initialize_struct(filename):
 				task_dependency_list = []
 			task_dependency_list_dict[task_id] = task_dependency_list
 			for dependency in task_dependency_list:
-				if dependency in task_children_dict:
-					task_children_dict[dependency].append( task_id)
+				if dependency in task_children_list_dict:
+					task_children_list_dict[dependency].append( task_id)
 				else: 
-					task_children_dict[dependency] = [task_id]
+					task_children_list_dict[dependency] = [task_id]
 			waiting_task_list.append(task_id)
-	return real_cost
+	return real_cost, task_children_list_dict, task_dependency_list_dict
 	
+def initialize_struct_half(filename):
+	task_list = []
+	with open(filename) as task_file:
+		task_children_list_dict = {} #each item in it is a <task_id, children_list>
+		task_dependency_list_dict = {} #each item in it is a <task_id, dependency_list>
+		for line in task_file:
+			first_space = line.find(' ', 0)
+			task_id = int(line[:first_space])
+			task_list.append(task_id)
+			right_brace = line.find(']', first_space + 1)
+			task_dependency = line[first_space + 2:right_brace]
+			task_dependency = task_dependency.replace(' ', '')
+			task_dependency_list = task_dependency.split(',')
+			if task_dependency_list == ['']:
+				task_dependency_list = []
+			else:
+				temp_list = []
+				for item in task_dependency_list:
+					temp_list.append(int(item))
+				task_dependency_list = temp_list[:]
+			task_dependency_list_dict[task_id] = task_dependency_list
+			for dependency in task_dependency_list:
+				if int(dependency) in task_children_list_dict:
+					task_children_list_dict[int(dependency)].append(task_id)
+				else: 
+					task_children_list_dict[int(dependency)] = [task_id]
+	#task_dependency_list_dict and task_children_list_dict uniquely define a workflow
+	return task_dependency_list_dict, task_children_list_dict, task_list
 
 def insert_finish_event_list(task_id, finish_time):
 	global finish_event_list
@@ -49,11 +78,10 @@ def insert_finish_event_list(task_id, finish_time):
 			pos = pos + 1
 		finish_event_list.insert(pos, {str(finish_time):task_id})
 
-
 #check each task in waiting_task_list, to see whether its ready to be put into ready_task_list
 #then check each task in the ready_task_list, check whether there are idle machines to run it
 #then jump the time to the first item in finish_event_list
-def schedule_tasks():
+def schedule_tasks(task_children_list_dict, task_dependency_list_dict):
 	running_machines = 0
 	current_time = 0
 	max_used_machines = 0
@@ -83,7 +111,7 @@ def schedule_tasks():
 			if running_machines > max_used_machines:
 				max_used_machines = running_machines
 	
-		print "task_children_dict", task_children_dict
+		print "task_children_list_dict", task_children_list_dict
 		print "task_length_dict", task_length_dict
 		print "task_dependency_list_dict", task_dependency_list_dict
 		print "running_task_list", running_task_list
@@ -103,8 +131,8 @@ def schedule_tasks():
 				running_task_list.remove(finish_task_id)
 				running_machines -= 1
 				finish_event_list.pop(0)
-				if finish_task_id in task_children_dict:
-					for item in task_children_dict[finish_task_id]:
+				if finish_task_id in task_children_list_dict:
+					for item in task_children_list_dict[finish_task_id]:
 						task_dependency_list_dict[item].remove(finish_task_id)	
 					if len(finish_event_list) > 0:
 						next_finish_event_time = int((finish_event_list[0]).keys()[0])
@@ -115,8 +143,8 @@ def schedule_tasks():
 	return (current_time, max_used_machines, time_interval_endpoint_list, time_interval_width_list)
 
 def full_process(filename):
-	real_cost = initialize_struct(filename)
-	(execution_time, max_used_machines, time_interval_endpoint_list, time_interval_width_list) = schedule_tasks()
+	real_cost, task_children_list_dict, task_dependency_list_dict = initialize_struct_full(filename)
+	(execution_time, max_used_machines, time_interval_endpoint_list, time_interval_width_list) = schedule_tasks(task_children_list_dict, task_dependency_list_dict)
 	total_cost = max_used_machines * int(execution_time)
 	idle_cost = total_cost - real_cost
 	wastage = float(idle_cost) / total_cost
@@ -142,6 +170,117 @@ def full_process(filename):
 	print "Optimized Machine Number: ", optimized_machine_number
 	
 
+def initialize_ancestor_list(task_dependency_list_dict):
+	task_ancestors_list_dict = {}
+	for key in sorted(task_dependency_list_dict.keys()):
+		task_ancestors_list_dict[key] = []
+		if len(task_dependency_list_dict[key]) == 0:
+			task_ancestors_list_dict[key] = []
+		else:
+			for item in task_dependency_list_dict[key]:
+				task_ancestors_list_dict[key] += task_ancestors_list_dict[item]
+				task_ancestors_list_dict[key].append(item)
+			task_ancestors_list_dict[key] = list(set(task_ancestors_list_dict[key]))
+	return task_ancestors_list_dict
+
+def initialize_descendants_list(task_children_list_dict):
+	task_descendants_list_dict = {}
+	for key in sorted(task_children_list_dict.keys(), reverse=True):
+		task_descendants_list_dict[key] = []
+		if len(task_children_list_dict[key]) == 0:
+			task_descendants_list_dict[key] = []
+		else:
+			for item in task_children_list_dict[key]:
+				if item not in task_children_list_dict:
+					task_descendants_list_dict[item] = []
+				task_descendants_list_dict[key] += task_descendants_list_dict[item]
+				task_descendants_list_dict[key].append(item)
+			task_descendants_list_dict[key] = list(set(task_descendants_list_dict[key]))
+	return task_descendants_list_dict
+
+def intialize_direct_relatives_list(task_ancestors_list_dict, task_descendants_list_dict):
+	task_direct_relatives_list_dict = {}
+	for key in task_ancestors_list_dict:
+		task_direct_relatives_list_dict[key] = list(set(task_ancestors_list_dict[key] + task_descendants_list_dict[key]))
+	return task_direct_relatives_list_dict
+
+''' Calculate the maximal parallel degree of each task in a workflow
+'''
+def max_degree(task_dependency_list_dict, task_children_list_dict, task_list):
+	print "max_degree **********"
+	print "task_list: ", task_list 
+	print "task_children_list_dict: ", task_children_list_dict 
+	print "task_dependency_list_dict: ", task_dependency_list_dict 
+#	for key, value in task_dependency_list_dict.items():
+#		print key, value
+#	for key, value in task_children_list_dict.items():
+#		print key, value
+	#calculate the ancestor list of each task, the descendant list of each task
+	task_ancestors_list_dict = initialize_ancestor_list(task_dependency_list_dict)
+	task_descendants_list_dict = initialize_descendants_list(task_children_list_dict)
+	task_direct_relatives_list_dict = intialize_direct_relatives_list(task_ancestors_list_dict, task_descendants_list_dict)
+	print "task_ancestors_list_dict: ", task_ancestors_list_dict
+	print "task_descendants_list_dict: ", task_descendants_list_dict
+	print "task_direct_relatives_list_dict", task_direct_relatives_list_dict
+	max_parallel_tasks_dict = {}
+	max_parallel_value = 0
+	for item in task_list:
+		max_parallel_tasks_dict[item] = 0
+		temp_list = list(task_list)
+		indirect_relatives_list = list(set(temp_list) - set(task_direct_relatives_list_dict[item]))
+		print "item, indirect_relatives_list: ", item, indirect_relatives_list
+		conflict_tasks_no = 0
+		for item1 in sorted(indirect_relatives_list):
+			temp_list1 = list(indirect_relatives_list)
+			union_list = list(set(temp_list1) & set(task_direct_relatives_list_dict[item1]))
+			if len(union_list) > 0:
+				print item1, "has some direct relative whose belongs to the indirect_relatives_list of,", item
+				conflict_tasks_no += 1
+				#construct new task_dependency_list_dict, task_children_list_dict, task_list and recursively call max_degree
+				temp_indirect_relatives_list = list(indirect_relatives_list)
+				if item in temp_indirect_relatives_list:
+					temp_indirect_relatives_list.remove(item)
+				new_task_list = list(temp_indirect_relatives_list)
+				removed_task_list = list(set(task_list) - set(new_task_list))
+				new_task_children_list_dict = dict(task_children_list_dict)
+				new_task_dependency_list_dict = dict(task_dependency_list_dict)
+				print "new_task_list: ", new_task_list
+				print "removed_task_list: ", removed_task_list
+				print "new_task_children_list_dict: ", new_task_children_list_dict
+				print "new_task_dependency_list_dict: ", new_task_dependency_list_dict
+				for key in removed_task_list:
+					if key in new_task_children_list_dict:
+						del new_task_children_list_dict[key]
+					if key in new_task_dependency_list_dict:
+						del new_task_dependency_list_dict[key]
+				for key in new_task_children_list_dict:
+					for item2 in new_task_children_list_dict[key]:
+						if item2 in removed_task_list:
+							new_task_children_list_dict[key].remove(item2)
+				for key in new_task_dependency_list_dict:
+					for item3 in new_task_dependency_list_dict[key]:
+						if item3 in removed_task_list:
+							new_task_dependency_list_dict[key].remove(item3)
+				max_temp = 1 + max_degree(new_task_dependency_list_dict, new_task_children_list_dict, new_task_list)
+				print "max_temp, item: ", max_temp, item
+				if max_temp > max_parallel_tasks_dict[item]:
+					max_parallel_tasks_dict[item] = max_temp
+		if conflict_tasks_no == 0:
+			max_parallel_tasks_dict[item] = len(indirect_relatives_list)
+		print "item, max_parallel_tasks_dict[item]: ", item, max_parallel_tasks_dict[item]
+		if max_parallel_tasks_dict[item] > max_parallel_value:
+			max_parallel_value = max_parallel_tasks_dict[item]
+	print "max_parallel_value: ", max_parallel_value, "for task_list: ", task_list, "***************"
+	return max_parallel_value	
+
+def half_process(filename):
+	task_dependency_list_dict, task_children_list_dict, task_list = initialize_struct_half(filename)
+	max_degree(task_dependency_list_dict, task_children_list_dict, task_list)
+	pass
+
+def zero_process(filename):
+	pass
+
 
 def main():
 	#Problem: extension support incremental download
@@ -158,6 +297,7 @@ def main():
 	if task_info == 'full':	
 		full_process(filename)
 	elif task_info == 'half':
+		half_process(filename)
 		pass
 	elif task_info == 'zero':
 		pass

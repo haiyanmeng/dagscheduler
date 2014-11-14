@@ -1,12 +1,15 @@
 #! /usr/bin/python
 import sys
 from optparse import OptionParser
+import datetime
 
 running_task_list = []
 ready_task_list = []
 waiting_task_list = []
 finish_event_list = []
 task_length_dict = {}
+
+subtree_max_parallel = {}
 
 origin_task_list = []
 origin_task_children_list_dict = {} #each item in it is a <task_id, children_list>
@@ -213,10 +216,16 @@ def intialize_direct_relatives_list(task_ancestors_list_dict, task_descendants_l
 ''' Calculate the maximal parallel degree of each task in a workflow
 '''
 def max_degree(task_dependency_list_dict, task_children_list_dict, task_list, filename):
-	print "max_degree **********"
-	print "task_list: ", task_list 
-	print "task_children_list_dict: ", task_children_list_dict 
-	print "task_dependency_list_dict: ", task_dependency_list_dict 
+	global subtree_max_parallel
+	task_list_str = ''
+	for key in sorted(task_list):
+		task_list_str += str(key)
+	if key in subtree_max_parallel:
+		return subtree_max_parallel[task_list_str]
+#	print "max_degree **********"
+#	print "task_list: ", task_list 
+#	print "task_children_list_dict: ", task_children_list_dict 
+#	print "task_dependency_list_dict: ", task_dependency_list_dict 
 #	for key, value in task_dependency_list_dict.items():
 #		print key, value
 #	for key, value in task_children_list_dict.items():
@@ -225,22 +234,22 @@ def max_degree(task_dependency_list_dict, task_children_list_dict, task_list, fi
 	task_ancestors_list_dict = initialize_ancestor_list(task_dependency_list_dict)
 	task_descendants_list_dict = initialize_descendants_list(task_children_list_dict)
 	task_direct_relatives_list_dict = intialize_direct_relatives_list(task_ancestors_list_dict, task_descendants_list_dict)
-	print "task_ancestors_list_dict: ", task_ancestors_list_dict
-	print "task_descendants_list_dict: ", task_descendants_list_dict
-	print "task_direct_relatives_list_dict", task_direct_relatives_list_dict
+#	print "task_ancestors_list_dict: ", task_ancestors_list_dict
+#	print "task_descendants_list_dict: ", task_descendants_list_dict
+#	print "task_direct_relatives_list_dict", task_direct_relatives_list_dict
 	max_parallel_tasks_dict = {}
 	max_parallel_value = 0
 	for item in task_list:
 		max_parallel_tasks_dict[item] = 0
 		temp_list = task_list[:]
 		indirect_relatives_list = list(set(temp_list) - set(task_direct_relatives_list_dict[item]))
-		print "item, indirect_relatives_list: ", item, indirect_relatives_list
+#		print "item, indirect_relatives_list: ", item, indirect_relatives_list
 		conflict_tasks_no = 0
 		for item1 in sorted(indirect_relatives_list):
 			temp_list1 = indirect_relatives_list[:]
 			union_list = list(set(temp_list1) & set(task_direct_relatives_list_dict[item1]))
 			if len(union_list) > 0:
-				print item1, "has some direct relative whose belongs to the indirect_relatives_list of,", item
+#				print item1, "has some direct relative whose belongs to the indirect_relatives_list of,", item
 				conflict_tasks_no += 1
 				#construct new task_dependency_list_dict, task_children_list_dict, task_list and recursively call max_degree
 				temp_indirect_relatives_list = indirect_relatives_list[:]
@@ -251,55 +260,60 @@ def max_degree(task_dependency_list_dict, task_children_list_dict, task_list, fi
 				removed_task_list = list(set(origin_task_list) - set(new_task_list))
 #				new_task_children_list_dict = dict(origin_task_children_list_dict)
 #				new_task_dependency_list_dict = dict(origin_task_dependency_list_dict)
-				print "---task_list: ", task_list
-				print "new_task_list: ", new_task_list
-				print "new_task_list: ", new_task_list
-				print "removed_task_list: ", removed_task_list
-				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
-				print "origin_task_children_list_dict: ", origin_task_children_list_dict
+#				print "---task_list: ", task_list
+#				print "new_task_list: ", new_task_list
+#				print "new_task_list: ", new_task_list
+#				print "removed_task_list: ", removed_task_list
+#				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
+#				print "origin_task_children_list_dict: ", origin_task_children_list_dict
 				for key in removed_task_list:
 					if key in new_task_children_list_dict:
 						del new_task_children_list_dict[key]
 					if key in new_task_dependency_list_dict:
 						del new_task_dependency_list_dict[key]
-				print "remove all the removed nodes from new_task_children_list_dict and new_task_dependency_list_dict"
-				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
-				print "origin_task_children_list_dict: ", origin_task_children_list_dict
+#				print "remove all the removed nodes from new_task_children_list_dict and new_task_dependency_list_dict"
+#				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
+#				print "origin_task_children_list_dict: ", origin_task_children_list_dict
 				for key2 in new_task_children_list_dict:
 					for item2 in new_task_children_list_dict[key2]:
 						if item2 in removed_task_list:
 							new_task_children_list_dict[key2].remove(item2)
 
-				print "remove all the removed nodes from new_task_children_list_dict[key].remove(item2)"
-				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
-				print "origin_task_children_list_dict: ", origin_task_children_list_dict
+#				print "remove all the removed nodes from new_task_children_list_dict[key].remove(item2)"
+#				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
+#				print "origin_task_children_list_dict: ", origin_task_children_list_dict
 			
 				for key3 in new_task_dependency_list_dict:
 					for item3 in new_task_dependency_list_dict[key3]:
 						if item3 in removed_task_list:
 							new_task_dependency_list_dict[key3].remove(item3)
 				
-				print "remove all the removed nodes from new_task_dependency_list_dict[key].remove(item3)"
-				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
-				print "origin_task_children_list_dict: ", origin_task_children_list_dict
-
-				print "new_task_children_list_dict: ", new_task_children_list_dict
-				print "new_task_dependency_list_dict: ", new_task_dependency_list_dict
-				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
-				print "origin_task_children_list_dict: ", origin_task_children_list_dict
+#				print "remove all the removed nodes from new_task_dependency_list_dict[key].remove(item3)"
+#				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
+#				print "origin_task_children_list_dict: ", origin_task_children_list_dict
+#
+#				print "new_task_children_list_dict: ", new_task_children_list_dict
+#				print "new_task_dependency_list_dict: ", new_task_dependency_list_dict
+#				print "origin_task_dependency_list_dict: ", origin_task_dependency_list_dict
+#				print "origin_task_children_list_dict: ", origin_task_children_list_dict
 				max_temp = 1 + max_degree(new_task_dependency_list_dict, new_task_children_list_dict, new_task_list, filename)
-				print "max_temp, item: ", max_temp, item
+#				print "max_temp, item: ", max_temp, item
 				if max_temp > max_parallel_tasks_dict[item]:
 					max_parallel_tasks_dict[item] = max_temp
 		if conflict_tasks_no == 0:
 			max_parallel_tasks_dict[item] = len(indirect_relatives_list)
-		print "item, max_parallel_tasks_dict[item]: ", item, max_parallel_tasks_dict[item]
+#		print "item, max_parallel_tasks_dict[item]: ", item, max_parallel_tasks_dict[item]
 		if max_parallel_tasks_dict[item] > max_parallel_value:
 			max_parallel_value = max_parallel_tasks_dict[item]
 	print "max_parallel_value: ", max_parallel_value, "for task_list: ", task_list, "***************"
+	task_list_str = ''
+	for key in sorted(task_list):
+		task_list_str += str(key)
+	subtree_max_parallel[task_list_str] = max_parallel_value
 	return max_parallel_value	
 
 def half_process(filename):
+	print "Starting: ", datetime.datetime.now()
 	task_dependency_list_dict, task_children_list_dict, task_list = initialize_struct_half(filename)
 	global origin_task_dependency_list_dict
 	origin_task_dependency_list_dict = dict(task_dependency_list_dict)
@@ -308,6 +322,7 @@ def half_process(filename):
 	global origin_task_list
 	origin_task_list = task_list[:]
 	max_degree(task_dependency_list_dict, task_children_list_dict, task_list, filename)
+	print "Ending: ", datetime.datetime.now()
 	pass
 
 def zero_process(filename):

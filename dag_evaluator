@@ -3,12 +3,7 @@ import sys
 from optparse import OptionParser
 import datetime
 
-running_task_list = []
-ready_task_list = []
-waiting_task_list = []
 finish_event_list = []
-task_length_dict = {}
-
 subtree_max_parallel = {}
 
 origin_task_list = []
@@ -23,7 +18,8 @@ def initialize_struct_full(filename):
 	with open(filename) as task_file:
 		task_children_list_dict = {} #each item in it is a <task_id, children_list>
 		task_dependency_list_dict = {} #each item in it is a <task_id, dependency_list>
-
+		waiting_task_list = []
+		task_length_dict = {}
 		for line in task_file:
 			first_space = line.find(' ', 0)
 			task_id = line[:first_space]
@@ -44,13 +40,14 @@ def initialize_struct_full(filename):
 				else: 
 					task_children_list_dict[dependency] = [task_id]
 			waiting_task_list.append(task_id)
-	return real_cost, task_children_list_dict, task_dependency_list_dict
+	return real_cost, task_children_list_dict, task_dependency_list_dict, waiting_task_list, task_length_dict
 	
 def initialize_struct_half(filename):
 	task_list = []
 	with open(filename) as task_file:
 		task_children_list_dict = {} #each item in it is a <task_id, children_list>
 		task_dependency_list_dict = {} #each item in it is a <task_id, dependency_list>
+		waiting_task_list = []
 		for line in task_file:
 			first_space = line.find(' ', 0)
 			task_id = int(line[:first_space])
@@ -72,8 +69,9 @@ def initialize_struct_half(filename):
 					task_children_list_dict[int(dependency)].append(task_id)
 				else: 
 					task_children_list_dict[int(dependency)] = [task_id]
+			waiting_task_list.append(task_id)
 	#task_dependency_list_dict and task_children_list_dict uniquely define a workflow
-	return task_dependency_list_dict, task_children_list_dict, task_list
+	return task_dependency_list_dict, task_children_list_dict, task_list, waiting_task_list
 
 def insert_finish_event_list(task_id, finish_time):
 	global finish_event_list
@@ -88,13 +86,15 @@ def insert_finish_event_list(task_id, finish_time):
 #check each task in waiting_task_list, to see whether its ready to be put into ready_task_list
 #then check each task in the ready_task_list, check whether there are idle machines to run it
 #then jump the time to the first item in finish_event_list
-def schedule_tasks(task_children_list_dict, task_dependency_list_dict):
+def schedule_tasks(task_children_list_dict, task_dependency_list_dict, waiting_task_list, task_length_dict):
 	running_machines = 0
 	current_time = 0
 	max_used_machines = 0
 	time_interval_endpoint_list = [0] 
 	time_interval_width_list = [] #the number of running tasks during the last time interval
-	while waiting_task_list:
+	ready_task_list = []
+	running_task_list = []
+	while waiting_task_list: #waiting_task_list is initialized to be the total task set
 		iterator = 0
 		waiting_to_ready_tasks = []
 		while iterator < len(waiting_task_list):
@@ -150,8 +150,8 @@ def schedule_tasks(task_children_list_dict, task_dependency_list_dict):
 	return (current_time, max_used_machines, time_interval_endpoint_list, time_interval_width_list)
 
 def full_process(filename):
-	real_cost, task_children_list_dict, task_dependency_list_dict = initialize_struct_full(filename)
-	(execution_time, max_used_machines, time_interval_endpoint_list, time_interval_width_list) = schedule_tasks(task_children_list_dict, task_dependency_list_dict)
+	real_cost, task_children_list_dict, task_dependency_list_dict, waiting_task_list, task_length_dict = initialize_struct_full(filename)
+	(execution_time, max_used_machines, time_interval_endpoint_list, time_interval_width_list) = schedule_tasks(task_children_list_dict, task_dependency_list_dict, waiting_task_list, task_length_dict)
 	total_cost = max_used_machines * int(execution_time)
 	idle_cost = total_cost - real_cost
 	wastage = float(idle_cost) / total_cost
@@ -256,7 +256,7 @@ def max_degree(task_dependency_list_dict, task_children_list_dict, task_list, fi
 				if item in temp_indirect_relatives_list:
 					temp_indirect_relatives_list.remove(item)
 				new_task_list = temp_indirect_relatives_list[:]
-				new_task_dependency_list_dict, new_task_children_list_dict, origin_task_list = initialize_struct_half(filename)
+				new_task_dependency_list_dict, new_task_children_list_dict, origin_task_list, waiting_task_list = initialize_struct_half(filename)
 				removed_task_list = list(set(origin_task_list) - set(new_task_list))
 #				new_task_children_list_dict = dict(origin_task_children_list_dict)
 #				new_task_dependency_list_dict = dict(origin_task_dependency_list_dict)
@@ -328,23 +328,72 @@ def level_width(task_dependency_list_dict):
 		task_num -= len(ready_task_list)
 		for item in ready_task_list:
 			del task_dependency_list_dict[item]
-		print level, level_dict, task_dependency_list_dict 
 		ready_task_list = []
 		for key in task_dependency_list_dict.keys():
 			task_dependency_list_dict[key] = list(set(task_dependency_list_dict[key]) - set(level_dict[level]))
 			if not task_dependency_list_dict[key]:
 				ready_task_list.append(key) 
-		print ready_task_list
 		level += 1
-
-	print level_dict
 	return level_dict
+
+def schedule_tasks_half(task_children_list_dict, task_dependency_list_dict, waiting_task_list):
+	print "schedule_task_half"
+	print task_children_list_dict, task_dependency_list_dict, waiting_task_list
+	max_used_machines = 0
+	ready_task_list = []
+	iterator = 0
+	while iterator < len(waiting_task_list):
+		task_id = waiting_task_list[iterator]
+		if not task_dependency_list_dict[task_id]:
+			ready_task_list.append(task_id)
+		iterator = iterator + 1
+
+	for item in ready_task_list:
+		if item in waiting_task_list:
+			waiting_task_list.remove(item)	
+
+	if len(ready_task_list) > max_used_machines:
+		max_used_machines = len(ready_task_list)
+
+	print "ready_task_list", ready_task_list
+	print "waiting_task_list", waiting_task_list
+	print "max_used_machines", max_used_machines
+
+	while ready_task_list:
+		first_ready_task = ready_task_list.pop(0)
+		if not first_ready_task in task_children_list_dict:
+			continue
+		for item in task_children_list_dict[first_ready_task]:
+			task_dependency_list_dict[item].remove(first_ready_task)
+			if not task_dependency_list_dict[item]:
+				ready_task_list.append(item)
+				del task_dependency_list_dict[item]
+				if item in waiting_task_list:
+					waiting_task_list.remove(item)	
+	
+		if len(ready_task_list) > max_used_machines:
+			max_used_machines = len(ready_task_list)
+	
+		print "ready_task_list", ready_task_list
+		print "waiting_task_list", waiting_task_list
+		print "max_used_machines", max_used_machines
+	
+	return max_used_machines
+
 
 def half_process(filename):
 	print "Starting: ", datetime.datetime.now()
-	task_dependency_list_dict, task_children_list_dict, task_list = initialize_struct_half(filename)
-	print task_dependency_list_dict, task_children_list_dict, task_list
-	level_width_dict = level_width(task_dependency_list_dict)
+	origin_task_dependency_list_dict, task_children_list_dict, task_list, waiting_task_list = initialize_struct_half(filename)
+	print origin_task_dependency_list_dict, task_children_list_dict, task_list
+	task_dependency_list_dict = dict(origin_task_dependency_list_dict)	
+	level_dict = level_width(task_dependency_list_dict)
+	print level_dict
+	for key in level_dict:
+		print key, level_dict[key], len(level_dict[key])
+
+	task_dependency_list_dict = dict(origin_task_dependency_list_dict)	
+	schedule_tasks_half(task_children_list_dict, task_dependency_list_dict, waiting_task_list)
+	#topological_sort_half(task_dependency_list_dict, task_children_list_dict)
 #	global origin_task_dependency_list_dict
 #	origin_task_dependency_list_dict = dict(task_dependency_list_dict)
 #	global origin_task_children_list_dict

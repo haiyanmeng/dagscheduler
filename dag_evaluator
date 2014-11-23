@@ -317,23 +317,26 @@ def level_width(task_dependency_list_dict):
 	level = 1
 	task_num = len(task_dependency_list_dict)
 	access_flag_list = [0] * task_num
-	print access_flag_list
+	ready_task_list = []
+	for key in task_dependency_list_dict.keys():
+		if not task_dependency_list_dict[key]:
+			ready_task_list.append(key)
+
 	while task_num > 0:
 		level_dict[level] = [] 
-		for key in task_dependency_list_dict:
-			if len(task_dependency_list_dict[key]) == 0 and access_flag_list[key - 1] == 0:
-				print "deal with ", key
-				level_dict[level].append(key)
-				access_flag_list[key - 1] = 1
-				task_num -= 1
-				print "level_dict: ", level_dict
-				print "task_num: ", task_num
-
-		for key in level_dict[level]:
-			for key1 in task_dependency_list_dict:
-				if key in task_dependency_list_dict[key1]:
-					task_dependency_list_dict[key1].remove(key)
+		level_dict[level] = ready_task_list
+		task_num -= len(ready_task_list)
+		for item in ready_task_list:
+			del task_dependency_list_dict[item]
+		print level, level_dict, task_dependency_list_dict 
+		ready_task_list = []
+		for key in task_dependency_list_dict.keys():
+			task_dependency_list_dict[key] = list(set(task_dependency_list_dict[key]) - set(level_dict[level]))
+			if not task_dependency_list_dict[key]:
+				ready_task_list.append(key) 
+		print ready_task_list
 		level += 1
+
 	print level_dict
 	return level_dict
 

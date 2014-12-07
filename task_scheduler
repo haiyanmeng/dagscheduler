@@ -1,6 +1,7 @@
 #! /usr/bin/python
 import sys
 from optparse import OptionParser
+import re
 
 running_task_list = []
 ready_task_list = []
@@ -70,10 +71,10 @@ def schedule_tasks(machine_number):
 			if item in waiting_task_list:
 				waiting_task_list.remove(item)	
 	
-		print "\nAt time %d:" % current_time
+#		print "\nAt time %d:" % current_time
 		while running_machines < machine_number and len(ready_task_list) > 0:
 			first_ready_task = ready_task_list.pop(0)
-			print "Start to run task %s, the task length is %s." % (first_ready_task, task_length_dict[first_ready_task])
+#			print "Start to run task %s, the task length is %s." % (first_ready_task, task_length_dict[first_ready_task])
 			first_ready_task_length = task_length_dict[first_ready_task]
 			insert_finish_event_list(first_ready_task, current_time + int(task_length_dict[first_ready_task]))
 			running_task_list.append(first_ready_task)
@@ -81,13 +82,13 @@ def schedule_tasks(machine_number):
 			if running_machines > max_used_machines:
 				max_used_machines = running_machines
 	
-		print "task_children_dict", task_children_dict
-		print "task_length_dict", task_length_dict
-		print "task_dependency_list_dict", task_dependency_list_dict
-		print "running_task_list", running_task_list
-		print "ready_task_list", ready_task_list
-		print "waiting_task_list", waiting_task_list
-		print "finish_event_list", finish_event_list
+#		print "task_children_dict", task_children_dict
+#		print "task_length_dict", task_length_dict
+#		print "task_dependency_list_dict", task_dependency_list_dict
+#		print "running_task_list", running_task_list
+#		print "ready_task_list", ready_task_list
+#		print "waiting_task_list", waiting_task_list
+#		print "finish_event_list", finish_event_list
 	
 		#jump the time to the first item in finish_event_list
 		if len(finish_event_list) > 0: 
@@ -96,13 +97,14 @@ def schedule_tasks(machine_number):
 			while len(finish_event_list) > 0 and next_finish_event_time == current_time:
 				first_finish_event = finish_event_list[0]
 				finish_task_id = first_finish_event[str(current_time)]
-				print "Finish task %s at time %d" % (finish_task_id, current_time)
+#				print "Finish task %s at time %d" % (finish_task_id, current_time)
 				running_task_list.remove(finish_task_id)
 				running_machines -= 1
 				finish_event_list.pop(0)
 				if finish_task_id in task_children_dict:
 					for item in task_children_dict[finish_task_id]:
-						task_dependency_list_dict[item].remove(finish_task_id)	
+						if finish_task_id in task_dependency_list_dict[item]:
+							task_dependency_list_dict[item].remove(finish_task_id)	
 				if len(finish_event_list) > 0:
 					next_finish_event_time = int((finish_event_list[0]).keys()[0])
 				else:
@@ -117,28 +119,36 @@ def main():
 	parser.add_option("-m", "--machines",
 					action="store",
 					default="1",
-					help="The number of machines")
+					help="The number of machines, you can provide a number, or a list of numbers like '3, 4, 5'")
 	(options, args) = parser.parse_args()
 
 	filename = sys.argv[-1]
-	machine_number = int(options.machines)
-	
-	real_cost = initialize_struct(filename)
-	(execution_time, max_used_machines) = schedule_tasks(machine_number)
-	total_cost = machine_number * int(execution_time)
-	idle_cost = total_cost - real_cost
-	wastage = float(idle_cost) / total_cost
-	
-	print "\nReal cost (sum of task lengths): %d" % (real_cost)
-	print "Machine Number: %d" % machine_number
-	print "Execution time: %s" % execution_time
-	print "Total cost (machine number * execution time): %d" % (total_cost)
-	print "Idle cost (total cost - real cost): %d" % idle_cost
-	print "Wastage (idle cost / total cost): %5.4f" % wastage
-	if max_used_machines < machine_number:
-		print "Max used machines = %d, which is less than the machine number(%d)" % (max_used_machines, machine_number)
+
+	machines_args = options.machines
+	machines_args = re.sub( '\s+', '', machines_args).strip() #remove all the whitespaces within the inputs option
+	if machines_args == '':
+			machine_list = []
 	else:
-		print "Max used machines = machine number = %d" % max_used_machines
+		machine_list = machines_args.split(',') 
+
+	for machine_number in machine_list:	
+		machine_number = int(machine_number)
+		real_cost = initialize_struct(filename)
+		(execution_time, max_used_machines) = schedule_tasks(machine_number)
+		total_cost = machine_number * int(execution_time)
+		idle_cost = total_cost - real_cost
+		wastage = float(idle_cost) / total_cost
+		print "\nScheduling results (machine number = %d):" % machine_number	
+		print "Real cost (sum of task lengths): %d" % (real_cost)
+		print "Machine Number: %d" % machine_number
+		print "Execution time: %s" % execution_time
+		print "Total cost (machine number * execution time): %d" % (total_cost)
+		print "Idle cost (total cost - real cost): %d" % idle_cost
+		print "Wastage (idle cost / total cost): %5.4f" % wastage
+		if max_used_machines < machine_number:
+			print "Max used machines = %d, which is less than the machine number(%d)" % (max_used_machines, machine_number)
+		else:
+			print "Max used machines = machine number = %d" % max_used_machines
 
 if __name__ == "__main__":
 	main()

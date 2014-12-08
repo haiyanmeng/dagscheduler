@@ -1,0 +1,57 @@
+#  scatter_plot_input.txt
+#
+#  Input to GNUPLOT, causing it to read SCATTER_PLOT.TXT and
+#  create a "scatter plot" of the data, that is, dots representing
+#  each point.
+#
+#  Choose the output device.
+#
+#set terminal jpeg giant
+set terminal png giant
+#
+#  Name the output file.
+#
+set output "scatter_plot.png"
+#
+#  Set the plot title.
+#
+set title "speedup and efficiency under different workers"
+#
+#  Get grid lines.
+#
+#set grid
+#
+#  Set axis labels.
+#
+set xlabel "<--- Num of Workers --->"
+set ylabel "<--- Speedup --->"
+set y2label "<--- Efficiency --->"
+#
+#  The following command forces X and Y axes to appear the same size.
+#
+#set size ratio 1
+#
+#  Timestamp the plot.
+#
+#set timestamp
+#
+#  Plot the data using X and Y ranges [0,1],
+#  using the data in 'scatter_plot.txt',
+#  marking the data with points only (a scatter plot)
+#  using line type 3 (blue)
+#  and point type 4 (open square)
+#
+set xrange [1:250]
+set yrange [1:500]
+set y2range [1:2.5]
+set xtics 50
+set ytics 100 nomirror
+set y2tics 0.5 nomirror
+#set ytics points lt 3 pt 6
+#set y2tics points lt 5 pt 6
+#plot 'speedup.data' with points lt 3 pt 6, 'efficiency.data' with points lt 5 pt 6
+plot 'speedup.data' title "Speedup" linetype 1 axes x1y1, 'efficiency.data' title "Efficiency" linetype 2 axes x1y2
+#
+#  Terminate.
+#
+quit

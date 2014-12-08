@@ -1,0 +1,57 @@
+#  scatter_plot_input.txt
+#
+#  Input to GNUPLOT, causing it to read SCATTER_PLOT.TXT and
+#  create a "scatter plot" of the data, that is, dots representing
+#  each point.
+#
+#  Choose the output device.
+#
+#set terminal jpeg giant
+set terminal png giant
+#
+#  Name the output file.
+#
+set output "case2.png"
+#
+#  Set the plot title.
+#
+set title "Execution Time and Wastage of Case2"
+#
+#  Get grid lines.
+#
+#set grid
+#
+#  Set axis labels.
+#
+set xlabel "<--- Machine Number --->"
+set ylabel "<--- Execution Time (Min) --->"
+set y2label "<--- Wastage --->"
+#
+#  The following command forces X and Y axes to appear the same size.
+#
+#set size ratio 1
+#
+#  Timestamp the plot.
+#
+#set timestamp
+#
+#  Plot the data using X and Y ranges [0,1],
+#  using the data in 'scatter_plot.txt',
+#  marking the data with points only (a scatter plot)
+#  using line type 3 (blue)
+#  and point type 4 (open square)
+#
+set xrange [0:5]
+set yrange [0:350]
+set y2range [0:1]
+set xtics 1
+set ytics 50 nomirror
+set y2tics 0.1 nomirror
+#set ytics points lt 3 pt 6
+#set y2tics points lt 5 pt 6
+#plot 'speedup.data' with points lt 3 pt 6, 'efficiency.data' with points lt 5 pt 6
+plot 'case2_estimated_time.data' title "Estimated Execution Time" with linespoints linetype 7 lw 2 ps 1 axes x1y1, 'case2_actual_time.data' title "Actual Execution Time" with points linetype 3 ps 1 axes x1y1, 'case2_estimated_wastage.data' title "Estimated Wastage" with linespoints linetype 2 lw 2 ps 1 axes x1y2, 'case2_actual_wastage.data' title "Actual Wastage" with points linetype 5 ps 1 axes x1y2
+#
+#  Terminate.
+#
+quit

@@ -1,0 +1,4 @@
+./dag_evaluator -d half Exp2_List > Output_DAGEval_Exp2.txt
+
+./task_scheduler -m '1, 10, 20, 30, 40, 50' Exp1_List_TaskSched > Output_TaskScheduler_Exp1.txt
+

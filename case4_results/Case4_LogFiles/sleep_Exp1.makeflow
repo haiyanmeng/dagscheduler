@@ -1,0 +1,69 @@
+SLEEP=/bin/sleep
+#the DAG has 6 levels. The widths of these 6 levels: 1, 2, 4, 7, 3, 1. Level mean height here.
+
+#DAG level 1 
+level1: $SLEEP
+	$SLEEP 10 > level1
+
+#DAG level 2 
+level2_1: $SLEEP level1 
+	$SLEEP 40 > level2_1
+
+level2_2: $SLEEP level1
+        $SLEEP 20 > level2_2
+
+
+#DAG level 3 
+level3_1: $SLEEP level2_1
+	$SLEEP 50 > level3_1
+
+level3_2: $SLEEP level2_1
+	$SLEEP 30 > level3_2
+
+level3_3: $SLEEP level2_1
+	$SLEEP 80 > level3_3
+
+level3_4: $SLEEP level2_2
+	$SLEEP 60 > level3_4
+
+
+#DAG level 4 
+
+level4_1: $SLEEP level3_1
+	$SLEEP 70 > level4_1
+
+level4_2: $SLEEP level3_2 level3_3
+	$SLEEP 90 > level4_2
+
+level4_3: $SLEEP level3_4
+	$SLEEP 45 > level4_3
+
+level4_4: $SLEEP level3_4
+	$SLEEP 55 > level4_4
+
+level4_5: $SLEEP level3_4
+	$SLEEP 35 > level4_5
+
+level4_6: $SLEEP level3_4
+	$SLEEP 20 > level4_6
+
+level4_7: $SLEEP level3_4
+	$SLEEP 50 > level4_7
+
+
+
+#DAG level 5 
+level5_1: $SLEEP level4_1 level4_2
+	$SLEEP 40 > level5_1
+
+level5_2: $SLEEP level4_3 level4_4 level4_5
+	$SLEEP 30 > level5_2
+
+level5_3: $SLEEP level4_6 level4_7
+	$SLEEP 40 > level5_3
+
+
+#DAG level 6
+level6_1: $SLEEP level5_1 level5_2 level5_3
+	$SLEEP 10 > level6_1
+

@@ -1,0 +1,4 @@
+Starting time:  2014-12-09 15:37:48.884273
+Optimized Machine Number (max parallel running tasks under topological sort):  7
+Finishing time:  2014-12-09 15:37:48.884705
+dag_evaluator takes  0:00:00.000432 s to evaluate the dag.

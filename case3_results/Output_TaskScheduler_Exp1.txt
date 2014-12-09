@@ -1,0 +1,45 @@
+
+Scheduling results (machine number = 3):
+Real cost (sum of task lengths): 1300
+Machine Number: 3
+Execution time: 600
+Total cost (machine number * execution time): 1800
+Idle cost (total cost - real cost): 500
+Wastage (idle cost / total cost): 0.2778
+Max used machines = machine number = 3
+
+Scheduling results (machine number = 5):
+Real cost (sum of task lengths): 1300
+Machine Number: 5
+Execution time: 500
+Total cost (machine number * execution time): 2500
+Idle cost (total cost - real cost): 1200
+Wastage (idle cost / total cost): 0.4800
+Max used machines = machine number = 5
+
+Scheduling results (machine number = 7):
+Real cost (sum of task lengths): 1300
+Machine Number: 7
+Execution time: 430
+Total cost (machine number * execution time): 3010
+Idle cost (total cost - real cost): 1710
+Wastage (idle cost / total cost): 0.5681
+Max used machines = machine number = 7
+
+Scheduling results (machine number = 9):
+Real cost (sum of task lengths): 1300
+Machine Number: 9
+Execution time: 430
+Total cost (machine number * execution time): 3870
+Idle cost (total cost - real cost): 2570
+Wastage (idle cost / total cost): 0.6641
+Max used machines = 7, which is less than the machine number(9)
+
+Scheduling results (machine number = 11):
+Real cost (sum of task lengths): 1300
+Machine Number: 11
+Execution time: 430
+Total cost (machine number * execution time): 4730
+Idle cost (total cost - real cost): 3430
+Wastage (idle cost / total cost): 0.7252
+Max used machines = 7, which is less than the machine number(11)

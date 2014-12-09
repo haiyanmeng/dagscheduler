@@ -1,0 +1,12 @@
+universe = vanilla
+executable = condor.sh
+getenv = true
+arguments = /bin/sleep 120 > level6_1
+transfer_input_files = level5_3,level5_2,level5_1,_bin_sleep,
+should_transfer_files = yes
+when_to_transfer_output = on_exit
+notification = never
+copy_to_spool = true
+transfer_executable = true
+log = sleep_Exp1.makeflow.condorlog
+queue

@@ -1,0 +1,580 @@
+2014/12/08 17:45:24.55 makeflow[24083] auth: kerberos: not compiled in
+2014/12/08 17:45:24.55 makeflow[24083] auth: globus: registered
+2014/12/08 17:45:24.55 makeflow[24083] auth: unix: registered
+2014/12/08 17:45:24.55 makeflow[24083] auth: ticket: registered
+2014/12/08 17:45:24.55 makeflow[24083] auth: hostname: registered
+2014/12/08 17:45:24.55 makeflow[24083] auth: address: registered
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: VARIABLE: =
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: SLEEP
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: dag appending to variable name=SLEEP, value=/bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: 1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: node command=/bin/sleep 1 > level1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: Setting resource category 'default' for rule 0.
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level2_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: 4
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level2_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: node command=/bin/sleep 4 > level2_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: Setting resource category 'default' for rule 1.
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level2_2
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: 4
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level2_2
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: node command=/bin/sleep 4 > level2_2
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: Setting resource category 'default' for rule 2.
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level3_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level2_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: 3
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level3_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: node command=/bin/sleep 3 > level3_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: Setting resource category 'default' for rule 3.
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level3_2
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level2_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: 3
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level3_2
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: node command=/bin/sleep 3 > level3_2
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: Setting resource category 'default' for rule 4.
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level3_3
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: LITERAL: level2_1
+2014/12/08 17:45:24.55 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 3 > level3_3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 5.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level2_2
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 3 > level3_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 6.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_1
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_1
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_1
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 6 > level4_1
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 7.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_2
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_2
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_2
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 6 > level4_2
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 8.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 6 > level4_3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 9.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 6 > level4_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 10.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_5
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_5
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 6 > level4_5
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 11.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 6 > level4_6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 12.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_7
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level3_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 6
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_7
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 6 > level4_7
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 13.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level5_1
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_1
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_2
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: 2
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level5_1
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: node command=/bin/sleep 2 > level5_1
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: Setting resource category 'default' for rule 14.
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level5_2
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_3
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_4
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: LITERAL: level4_5
+2014/12/08 17:45:24.56 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: 2
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level5_2
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: node command=/bin/sleep 2 > level5_2
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: Setting resource category 'default' for rule 15.
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level5_3
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level4_6
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level4_7
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: 2
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level5_3
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: node command=/bin/sleep 2 > level5_3
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: Setting resource category 'default' for rule 16.
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: FILES:
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level6_1
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: COLON
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level5_1
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level5_2
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level5_3
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: COMMAND:
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: COMMAND_MOD_END:
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: /bin/sleep
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: 8
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: IO_REDIRECT: >
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: SPACE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: LITERAL: level6_1
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: NEWLINE
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: node command=/bin/sleep 8 > level6_1
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: Setting resource category 'default' for rule 17.
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 11 ancestor of 15
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 16 ancestor of 17
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 5 ancestor of 8
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 4 ancestor of 8
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 10 ancestor of 15
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 9 ancestor of 15
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 0 ancestor of 2
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 0 ancestor of 1
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 6 ancestor of 13
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 6 ancestor of 12
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 6 ancestor of 11
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 6 ancestor of 10
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 6 ancestor of 9
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 15 ancestor of 17
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 14 ancestor of 17
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 3 ancestor of 7
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 1 ancestor of 5
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 1 ancestor of 4
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 1 ancestor of 3
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 7 ancestor of 14
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 8 ancestor of 14
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 12 ancestor of 16
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 2 ancestor of 6
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: rule 13 ancestor of 16
+2014/12/08 17:45:24.57 makeflow[24083] batch: created queue 0x1c81330 (condor)
+2014/12/08 17:45:24.57 makeflow[24083] batch: set logfile to `sleep_Exp2.makeflow.condorlog'
+2014/12/08 17:45:24.57 makeflow[24083] batch: cleared option `batch-options'
+2014/12/08 17:45:24.57 makeflow[24083] batch: set option `skip-afs-check' to `no'
+2014/12/08 17:45:24.57 makeflow[24083] batch: cleared option `password'
+2014/12/08 17:45:24.57 makeflow[24083] batch: set option `master-mode' to `catalog'
+2014/12/08 17:45:24.57 makeflow[24083] batch: set option `name' to `Case3_Exp1'
+2014/12/08 17:45:24.57 makeflow[24083] batch: cleared option `priority'
+2014/12/08 17:45:24.57 makeflow[24083] batch: set option `estimate-capacity' to `yes'
+2014/12/08 17:45:24.57 makeflow[24083] batch: cleared option `keepalive-interval'
+2014/12/08 17:45:24.57 makeflow[24083] batch: cleared option `keepalive-timeout'
+2014/12/08 17:45:24.57 makeflow[24083] batch: set option `caching' to `yes'
+2014/12/08 17:45:24.57 makeflow[24083] batch: cleared option `wait-queue-size'
+2014/12/08 17:45:24.57 makeflow[24083] batch: cleared option `working-dir'
+2014/12/08 17:45:24.57 makeflow[24083] batch: created queue 0x1c82f70 (local)
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: creating symlink "./_bin_sleep" for file "/bin/sleep"
+2014/12/08 17:45:24.57 makeflow[24083] makeflow: checking rules for consistency...
+2014/12/08 17:45:24.62 makeflow[24083] batch: job 650683 submitted to condor
+2014/12/08 17:45:24.62 makeflow[24083] makeflow: node 17 waiting -> running
+2014/12/08 17:45:24.67 makeflow[24083] batch: job 650684 submitted to condor
+2014/12/08 17:45:24.67 makeflow[24083] makeflow: node 16 waiting -> running
+2014/12/08 17:45:24.72 makeflow[24083] batch: job 650685 submitted to condor
+2014/12/08 17:45:24.72 makeflow[24083] makeflow: node 15 waiting -> running
+2014/12/08 17:45:24.77 makeflow[24083] batch: job 650686 submitted to condor
+2014/12/08 17:45:24.77 makeflow[24083] makeflow: node 14 waiting -> running
+2014/12/08 17:45:24.81 makeflow[24083] batch: job 650687 submitted to condor
+2014/12/08 17:45:24.81 makeflow[24083] makeflow: node 13 waiting -> running
+2014/12/08 17:45:24.85 makeflow[24083] batch: job 650688 submitted to condor
+2014/12/08 17:45:24.85 makeflow[24083] makeflow: node 12 waiting -> running
+2014/12/08 17:45:24.90 makeflow[24083] batch: job 650689 submitted to condor
+2014/12/08 17:45:24.90 makeflow[24083] makeflow: node 11 waiting -> running
+2014/12/08 17:45:24.94 makeflow[24083] batch: job 650690 submitted to condor
+2014/12/08 17:45:24.94 makeflow[24083] makeflow: node 10 waiting -> running
+2014/12/08 17:45:24.98 makeflow[24083] batch: job 650691 submitted to condor
+2014/12/08 17:45:24.98 makeflow[24083] makeflow: node 9 waiting -> running
+2014/12/08 17:45:25.03 makeflow[24083] batch: job 650692 submitted to condor
+2014/12/08 17:45:25.03 makeflow[24083] makeflow: node 8 waiting -> running
+2014/12/08 17:45:25.07 makeflow[24083] batch: job 650693 submitted to condor
+2014/12/08 17:45:25.07 makeflow[24083] makeflow: node 7 waiting -> running
+2014/12/08 17:45:25.11 makeflow[24083] batch: job 650694 submitted to condor
+2014/12/08 17:45:25.11 makeflow[24083] makeflow: node 6 waiting -> running
+2014/12/08 17:45:25.16 makeflow[24083] batch: job 650695 submitted to condor
+2014/12/08 17:45:25.16 makeflow[24083] makeflow: node 5 waiting -> running
+2014/12/08 17:45:25.20 makeflow[24083] batch: job 650696 submitted to condor
+2014/12/08 17:45:25.20 makeflow[24083] makeflow: node 4 waiting -> running
+2014/12/08 17:45:25.24 makeflow[24083] batch: job 650697 submitted to condor
+2014/12/08 17:45:25.24 makeflow[24083] makeflow: node 3 waiting -> running
+2014/12/08 17:45:25.29 makeflow[24083] batch: job 650698 submitted to condor
+2014/12/08 17:45:25.29 makeflow[24083] makeflow: node 2 waiting -> running
+2014/12/08 17:45:25.33 makeflow[24083] batch: job 650699 submitted to condor
+2014/12/08 17:45:25.33 makeflow[24083] makeflow: node 1 waiting -> running
+2014/12/08 17:45:25.37 makeflow[24083] batch: job 650700 submitted to condor
+2014/12/08 17:45:25.37 makeflow[24083] makeflow: node 0 waiting -> running
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650683.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650684.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650685.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650686.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650687.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650688.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650689.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650690.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650691.000.000) 12/08 17:45:24 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650692.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650693.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650694.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650695.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650696.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650697.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650698.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650699.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:25.37 makeflow[24083] batch: line: 000 (650700.000.000) 12/08 17:45:25 Job submitted from host: <129.74.85.39:13242>
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650684.000.000) 12/08 17:45:33 Job executing on host: <10.32.72.0:9566>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650684 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650685.000.000) 12/08 17:45:33 Job executing on host: <10.32.74.68:9175>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650685 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650686.000.000) 12/08 17:45:33 Job executing on host: <10.32.74.78:9669>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650686 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650688.000.000) 12/08 17:45:33 Job executing on host: <10.32.76.78:9370>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650688 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650687.000.000) 12/08 17:45:33 Job executing on host: <10.32.72.6:9214>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650687 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650689.000.000) 12/08 17:45:33 Job executing on host: <10.32.71.60:9546>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650689 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650691.000.000) 12/08 17:45:33 Job executing on host: <10.32.70.31:9517>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650691 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650695.000.000) 12/08 17:45:33 Job executing on host: <10.32.76.78:9370>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650695 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650696.000.000) 12/08 17:45:33 Job executing on host: <10.32.70.15:9940>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650696 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650690.000.000) 12/08 17:45:33 Job executing on host: <10.32.76.32:9698>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650690 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650694.000.000) 12/08 17:45:33 Job executing on host: <10.32.74.68:9175>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650694 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650693.000.000) 12/08 17:45:33 Job executing on host: <10.32.71.40:9965>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650693 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650692.000.000) 12/08 17:45:33 Job executing on host: <10.32.71.64:9991>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650692 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650700.000.000) 12/08 17:45:33 Job executing on host: <10.32.76.78:9370>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650700 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650683.000.000) 12/08 17:45:33 Job executing on host: <10.32.76.92:9628>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650683 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650699.000.000) 12/08 17:45:33 Job executing on host: <10.32.70.31:9517>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650699 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650698.000.000) 12/08 17:45:33 Job executing on host: <10.32.71.60:9546>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650698 running now
+2014/12/08 17:45:34.37 makeflow[24083] batch: line: 001 (650697.000.000) 12/08 17:45:33 Job executing on host: <10.32.76.92:9628>
+2014/12/08 17:45:34.37 makeflow[24083] batch: job 650697 running now
+2014/12/08 17:45:35.38 makeflow[24083] batch: line: 006 (650700.000.000) 12/08 17:45:34 Image size of job updated: 1
+2014/12/08 17:45:36.38 makeflow[24083] batch: line: 006 (650685.000.000) 12/08 17:45:35 Image size of job updated: 206992
+2014/12/08 17:45:36.38 makeflow[24083] batch: line: 006 (650684.000.000) 12/08 17:45:35 Image size of job updated: 1
+2014/12/08 17:45:36.38 makeflow[24083] batch: line: 006 (650686.000.000) 12/08 17:45:35 Image size of job updated: 1
+2014/12/08 17:45:36.38 makeflow[24083] batch: line: 005 (650700.000.000) 12/08 17:45:35 Job terminated.
+2014/12/08 17:45:36.38 makeflow[24083] batch: job 650700 completed normally with status 0.
+2014/12/08 17:45:36.38 makeflow[24083] makeflow: Job 650700 has returned.
+2014/12/08 17:45:36.38 makeflow[24083] makeflow: node 0 running -> complete
+2014/12/08 17:45:37.38 makeflow[24083] batch: line: 005 (650685.000.000) 12/08 17:45:36 Job terminated.
+2014/12/08 17:45:37.38 makeflow[24083] batch: job 650685 completed normally with status 0.
+2014/12/08 17:45:37.38 makeflow[24083] makeflow: Job 650685 has returned.
+2014/12/08 17:45:37.38 makeflow[24083] makeflow: node 15 running -> complete
+2014/12/08 17:45:37.38 makeflow[24083] batch: line: 005 (650684.000.000) 12/08 17:45:36 Job terminated.
+2014/12/08 17:45:37.38 makeflow[24083] batch: job 650684 completed normally with status 0.
+2014/12/08 17:45:37.38 makeflow[24083] makeflow: Job 650684 has returned.
+2014/12/08 17:45:37.38 makeflow[24083] makeflow: node 16 running -> complete
+2014/12/08 17:45:37.38 makeflow[24083] batch: line: 005 (650686.000.000) 12/08 17:45:36 Job terminated.
+2014/12/08 17:45:37.38 makeflow[24083] batch: job 650686 completed normally with status 0.
+2014/12/08 17:45:37.38 makeflow[24083] makeflow: Job 650686 has returned.
+2014/12/08 17:45:37.38 makeflow[24083] makeflow: node 14 running -> complete
+2014/12/08 17:45:37.38 makeflow[24083] batch: line: 006 (650695.000.000) 12/08 17:45:36 Image size of job updated: 206992
+2014/12/08 17:45:37.38 makeflow[24083] batch: line: 006 (650696.000.000) 12/08 17:45:36 Image size of job updated: 1
+2014/12/08 17:45:37.38 makeflow[24083] batch: line: 006 (650694.000.000) 12/08 17:45:36 Image size of job updated: 206992
+2014/12/08 17:45:37.38 makeflow[24083] batch: line: 006 (650697.000.000) 12/08 17:45:36 Image size of job updated: 1
+2014/12/08 17:45:38.38 makeflow[24083] batch: line: 005 (650695.000.000) 12/08 17:45:37 Job terminated.
+2014/12/08 17:45:38.38 makeflow[24083] batch: job 650695 completed normally with status 0.
+2014/12/08 17:45:38.38 makeflow[24083] makeflow: Job 650695 has returned.
+2014/12/08 17:45:38.38 makeflow[24083] makeflow: node 5 running -> complete
+2014/12/08 17:45:38.38 makeflow[24083] batch: line: 005 (650696.000.000) 12/08 17:45:37 Job terminated.
+2014/12/08 17:45:38.38 makeflow[24083] batch: job 650696 completed normally with status 0.
+2014/12/08 17:45:38.38 makeflow[24083] makeflow: Job 650696 has returned.
+2014/12/08 17:45:38.38 makeflow[24083] makeflow: node 4 running -> complete
+2014/12/08 17:45:38.38 makeflow[24083] batch: line: 005 (650694.000.000) 12/08 17:45:37 Job terminated.
+2014/12/08 17:45:38.38 makeflow[24083] batch: job 650694 completed normally with status 0.
+2014/12/08 17:45:38.38 makeflow[24083] makeflow: Job 650694 has returned.
+2014/12/08 17:45:38.38 makeflow[24083] makeflow: node 6 running -> complete
+2014/12/08 17:45:38.38 makeflow[24083] batch: line: 006 (650699.000.000) 12/08 17:45:37 Image size of job updated: 206992
+2014/12/08 17:45:38.38 makeflow[24083] batch: line: 006 (650698.000.000) 12/08 17:45:37 Image size of job updated: 206992
+2014/12/08 17:45:38.38 makeflow[24083] batch: line: 005 (650697.000.000) 12/08 17:45:37 Job terminated.
+2014/12/08 17:45:38.38 makeflow[24083] batch: job 650697 completed normally with status 0.
+2014/12/08 17:45:38.38 makeflow[24083] makeflow: Job 650697 has returned.
+2014/12/08 17:45:38.38 makeflow[24083] makeflow: node 3 running -> complete
+2014/12/08 17:45:39.38 makeflow[24083] batch: line: 005 (650699.000.000) 12/08 17:45:38 Job terminated.
+2014/12/08 17:45:39.38 makeflow[24083] batch: job 650699 completed normally with status 0.
+2014/12/08 17:45:39.38 makeflow[24083] makeflow: Job 650699 has returned.
+2014/12/08 17:45:39.38 makeflow[24083] makeflow: node 1 running -> complete
+2014/12/08 17:45:39.38 makeflow[24083] batch: line: 005 (650698.000.000) 12/08 17:45:38 Job terminated.
+2014/12/08 17:45:39.38 makeflow[24083] batch: job 650698 completed normally with status 0.
+2014/12/08 17:45:39.38 makeflow[24083] makeflow: Job 650698 has returned.
+2014/12/08 17:45:39.38 makeflow[24083] makeflow: node 2 running -> complete
+2014/12/08 17:45:40.38 makeflow[24083] batch: line: 006 (650688.000.000) 12/08 17:45:39 Image size of job updated: 206992
+2014/12/08 17:45:40.38 makeflow[24083] batch: line: 006 (650687.000.000) 12/08 17:45:39 Image size of job updated: 1
+2014/12/08 17:45:40.38 makeflow[24083] batch: line: 006 (650691.000.000) 12/08 17:45:39 Image size of job updated: 206992
+2014/12/08 17:45:40.38 makeflow[24083] batch: line: 006 (650689.000.000) 12/08 17:45:39 Image size of job updated: 206992
+2014/12/08 17:45:40.38 makeflow[24083] batch: line: 006 (650690.000.000) 12/08 17:45:39 Image size of job updated: 1
+2014/12/08 17:45:40.38 makeflow[24083] batch: line: 006 (650693.000.000) 12/08 17:45:39 Image size of job updated: 1
+2014/12/08 17:45:40.38 makeflow[24083] batch: line: 006 (650692.000.000) 12/08 17:45:39 Image size of job updated: 206992
+2014/12/08 17:45:41.38 makeflow[24083] batch: line: 005 (650688.000.000) 12/08 17:45:40 Job terminated.
+2014/12/08 17:45:41.38 makeflow[24083] batch: job 650688 completed normally with status 0.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: Job 650688 has returned.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: node 12 running -> complete
+2014/12/08 17:45:41.38 makeflow[24083] batch: line: 005 (650687.000.000) 12/08 17:45:40 Job terminated.
+2014/12/08 17:45:41.38 makeflow[24083] batch: job 650687 completed normally with status 0.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: Job 650687 has returned.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: node 13 running -> complete
+2014/12/08 17:45:41.38 makeflow[24083] batch: line: 005 (650691.000.000) 12/08 17:45:40 Job terminated.
+2014/12/08 17:45:41.38 makeflow[24083] batch: job 650691 completed normally with status 0.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: Job 650691 has returned.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: node 9 running -> complete
+2014/12/08 17:45:41.38 makeflow[24083] batch: line: 005 (650689.000.000) 12/08 17:45:40 Job terminated.
+2014/12/08 17:45:41.38 makeflow[24083] batch: job 650689 completed normally with status 0.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: Job 650689 has returned.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: node 11 running -> complete
+2014/12/08 17:45:41.38 makeflow[24083] batch: line: 005 (650690.000.000) 12/08 17:45:40 Job terminated.
+2014/12/08 17:45:41.38 makeflow[24083] batch: job 650690 completed normally with status 0.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: Job 650690 has returned.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: node 10 running -> complete
+2014/12/08 17:45:41.38 makeflow[24083] batch: line: 005 (650693.000.000) 12/08 17:45:40 Job terminated.
+2014/12/08 17:45:41.38 makeflow[24083] batch: job 650693 completed normally with status 0.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: Job 650693 has returned.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: node 7 running -> complete
+2014/12/08 17:45:41.38 makeflow[24083] batch: line: 005 (650692.000.000) 12/08 17:45:40 Job terminated.
+2014/12/08 17:45:41.38 makeflow[24083] batch: job 650692 completed normally with status 0.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: Job 650692 has returned.
+2014/12/08 17:45:41.38 makeflow[24083] makeflow: node 8 running -> complete
+2014/12/08 17:45:42.38 makeflow[24083] batch: line: 006 (650683.000.000) 12/08 17:45:41 Image size of job updated: 206992
+2014/12/08 17:45:43.38 makeflow[24083] batch: line: 005 (650683.000.000) 12/08 17:45:42 Job terminated.
+2014/12/08 17:45:43.38 makeflow[24083] batch: job 650683 completed normally with status 0.
+2014/12/08 17:45:43.38 makeflow[24083] makeflow: Job 650683 has returned.
+2014/12/08 17:45:43.38 makeflow[24083] makeflow: node 17 running -> complete
+2014/12/08 17:45:43.38 makeflow[24083] batch: deleting queue 0x1c82f70
+2014/12/08 17:45:43.38 makeflow[24083] batch: deleting queue 0x1c81330
